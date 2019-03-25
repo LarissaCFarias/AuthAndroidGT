@@ -14,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".InicioActivity"></activity>
+        <activity android:name=".UserPerfil"></activity>
+        <activity android:name=".CadPerfilActivity" />
+        <activity android:name=".InicioActivity" />
         <activity android:name=".Logon" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">

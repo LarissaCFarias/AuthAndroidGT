@@ -1,6 +1,7 @@
 package br.com.udemycouse.gtauth;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -73,6 +74,7 @@ public class Logon extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 Toast.makeText(Logon.this, "YEY", Toast.LENGTH_SHORT).show();
                                 progressBar.dismiss();
+                                telaNova();
                             } else {
                                 String message = task.getException().toString();
                                 Toast.makeText(Logon.this, "Error" + message, Toast.LENGTH_SHORT).show();
@@ -83,5 +85,12 @@ public class Logon extends AppCompatActivity {
                         }
                     });
         }
+    }
+
+    public void telaNova(){
+
+        Intent intent = new Intent(Logon.this, CadPerfilActivity.class);
+        //intent.putExtra("message", emailT.toString());
+        startActivity(intent);
     }
 }

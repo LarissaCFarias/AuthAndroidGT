@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class InicioActivity extends AppCompatActivity {
 
-    private Button outLog;
+    private Button outLog, gotoPerfil;
     FirebaseAuth mAuth;
 
     @Override
@@ -20,6 +20,7 @@ public class InicioActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         outLog = (Button) findViewById(R.id.btnOut);
+        gotoPerfil = (Button) findViewById(R.id.btnPerfil);
 
         outLog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,11 +29,23 @@ public class InicioActivity extends AppCompatActivity {
                 telaEntrar();
             }
         });
+
+        gotoPerfil.setOnClickListener(new View.OnClickListener(){
+            @Override
+                public void onClick(View v){
+                telaPerfil();
+            }
+        });
     }
 
     public void telaEntrar(){
 
         Intent intent = new Intent(InicioActivity.this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void telaPerfil(){
+        Intent intent = new Intent (InicioActivity.this, UserPerfil.class);
         startActivity(intent);
     }
 }
