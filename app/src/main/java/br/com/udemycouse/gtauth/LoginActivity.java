@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void telaNova(){
 
-        Intent intent = new Intent(LoginActivity.this, InicioActivity.class);
+        Intent intent = new Intent(LoginActivity.this, Home.class);
         startActivity(intent);
     }
 

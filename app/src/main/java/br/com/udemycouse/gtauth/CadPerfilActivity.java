@@ -170,7 +170,6 @@ public class CadPerfilActivity extends AppCompatActivity {
     }
 
     public void updateUserInfo(final String nome, Uri pickedImgURI, final FirebaseUser currentUser){
-         //upload photo
         StorageReference mStorage = FirebaseStorage.getInstance().getReference().child("users_photo");
         final StorageReference imgFilePath = mStorage.child(pickedImgURI.getLastPathSegment());
         imgFilePath.putFile(pickedImgURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -193,6 +192,8 @@ public class CadPerfilActivity extends AppCompatActivity {
                             public void onComplete( Task<Void> task) {
 
                                 if(task.isSuccessful()){
+                                     //Login login = new Login (id, nome, apelido, dtNasc, eMail, senha);
+                                     //loginReference.child(id).setValue(login);
                                     Toast.makeText(CadPerfilActivity.this, getString(R.string.login_criado), Toast.LENGTH_SHORT);
                                     telaNova();
                                 }
@@ -236,7 +237,7 @@ public class CadPerfilActivity extends AppCompatActivity {
 
     public void telaNova(){
 
-        Intent intent = new Intent(CadPerfilActivity.this, InicioActivity.class);
+        Intent intent = new Intent(CadPerfilActivity.this, Home.class);
 
         startActivity(intent);
 
