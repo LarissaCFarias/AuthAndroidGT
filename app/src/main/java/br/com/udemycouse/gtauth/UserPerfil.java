@@ -1,5 +1,6 @@
 package br.com.udemycouse.gtauth;
 
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;

@@ -3,7 +3,8 @@
     <string name="Name">Nome</string>
     <string name="Apelido">Apelido</string>
     <string name="insert">Insert</string>
-    <string name='login_criado'>Contato criado</string>
+    <string name='login_criado'>Conta criada com sucesso</string>
+    <string name='login_error'>Algo deu errado, tente novamente</string>
     <string name="DtNasc">Data de Nascimento</string>
     <string name="email">E-Mail</string>
     <string name="password">Senha</string>
@@ -12,4 +13,5 @@
     <string name="atualizar_contato">Atualizar Contato</string>
     <string name="contato_removido">Contato Removido</string>
     <string name="contato_adicionado">Contato Adicionado</string>
+    <string name="campo_vazio">Por favor, preencha todos os campos</string>
 </resources>

@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void telaCad(){
 
-        Intent intent = new Intent(MainActivity.this, Logon.class);
+        Intent intent = new Intent(MainActivity.this, CadPerfilActivity.class);
         startActivity(intent);
     }
 
