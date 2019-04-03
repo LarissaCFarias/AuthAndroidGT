@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void telaLog(){
 
-        Intent intent = new Intent(MainActivity.this, Home.class);
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
     }
 }

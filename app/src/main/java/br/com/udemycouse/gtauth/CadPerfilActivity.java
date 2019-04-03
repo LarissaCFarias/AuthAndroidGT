@@ -31,6 +31,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.HashMap;
+
 public class CadPerfilActivity extends AppCompatActivity {
 
     static int PReqCode = 1;
@@ -172,10 +174,16 @@ public class CadPerfilActivity extends AppCompatActivity {
     public void updateUserInfo(final String nome, Uri pickedImgURI, final FirebaseUser currentUser){
         StorageReference mStorage = FirebaseStorage.getInstance().getReference().child("users_photo");
         final StorageReference imgFilePath = mStorage.child(pickedImgURI.getLastPathSegment());
+        final String userid = currentUser.getUid();
+
+        final String apelido = mApelido.getEditableText().toString();
+        final String dtNasc = mDtNasc.getEditableText().toString();
+
         imgFilePath.putFile(pickedImgURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 //sucsseesss
+
 
                 imgFilePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
@@ -192,10 +200,27 @@ public class CadPerfilActivity extends AppCompatActivity {
                             public void onComplete( Task<Void> task) {
 
                                 if(task.isSuccessful()){
-                                     //Login login = new Login (id, nome, apelido, dtNasc, eMail, senha);
-                                     //loginReference.child(id).setValue(login);
-                                    Toast.makeText(CadPerfilActivity.this, getString(R.string.login_criado), Toast.LENGTH_SHORT);
-                                    telaNova();
+
+                                    loginReference = FirebaseDatabase.getInstance().getReference().child("Users").child(userid);
+
+                                    HashMap<String, Object> hashMap = new HashMap<>();
+                                    hashMap.put("id", userid);
+                                    hashMap.put("nome", nome);
+                                    hashMap.put("apelido", apelido);
+                                    hashMap.put("dtNasc", dtNasc);
+                                    hashMap.put("imageurl", "https://firebasestorage.googleapis.com/v0/b/e-agendav2.appspot.com/o/users_photo%2Fimage%3A240958?alt=media&token=21b2e139-95a2-4892-ae2c-29be95eff085");
+
+                                    loginReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+
+                                            Toast.makeText(CadPerfilActivity.this, getString(R.string.login_criado), Toast.LENGTH_SHORT);
+                                            telaNova();
+                                        }
+                                    });
+
+
+
                                 }
 
 
